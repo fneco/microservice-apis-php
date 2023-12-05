@@ -17,16 +17,16 @@ paths:
   /orders:
     get:
       parameters:
-      - name: cancelled
-        in: query
-        required: false
-        schema:
-          type: boolean
-      - name: limit
-        in: query
-        required: false
-        schema:
-          type: integer
+        - name: cancelled
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
       summary: Returns a list of orders
       operationId: getOrders
       description: >
@@ -106,7 +106,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref:  '#/components/schemas/GetOrderSchema'
+                $ref: '#/components/schemas/GetOrderSchema'
         '404':
           $ref: '#/components/responses/NotFound'
         '422':
@@ -145,7 +145,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
-
 
   /orders/{order_id}/cancel:
     parameters:
