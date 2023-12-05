@@ -1,0 +1,9 @@
+services:
+    openapi-generator-cli:
+        image: 'openapitools/openapi-generator-cli'
+        volumes:
+            - './:/local'
+        command: generate
+            --input-spec /local/openapi/oas.yaml
+            --generator-name php
+            --output /local/openapi/Client
