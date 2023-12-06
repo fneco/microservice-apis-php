@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+"$(dirname "$0")/docker-compose-run" openapi-generator-cli-php
