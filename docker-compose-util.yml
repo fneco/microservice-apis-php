@@ -31,3 +31,11 @@ services:
             - './:/spec'
         # cf. https://redocly.com/docs/cli/commands/build-docs/
         command: build-docs ./openapi/oas.yaml --output=./public/redocly.html
+
+    spectral-lint:
+        image: 'stoplight/spectral'
+        volumes:
+            - './:/tmp'
+        working_dir: '/tmp'
+        # cf. https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli/
+        command: lint ./openapi/oas.yaml
