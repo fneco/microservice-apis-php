@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+if (config('app.debug')) {
+    Route::get('/', static fn () => \File::get(public_path() . '/redocly.html'));
+};
