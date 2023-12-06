@@ -1,9 +1,33 @@
 services:
-    openapi-generator-cli:
-        image: 'openapitools/openapi-generator-cli'
+    openapi-generator-cli-php:
+        image: 'openapitools/openapi-generator-cli:v7.0.1'
         volumes:
             - './:/local'
+        working_dir: '/local'
         command: generate
-            --input-spec /local/openapi/oas.yaml
             --generator-name php
-            --output /local/openapi/Client
+            --input-spec ./openapi/oas.yaml
+            --output ./openapi/Client
+
+    openapi-generator-cli-openapi-yaml:
+        image: 'openapitools/openapi-generator-cli:v7.0.1'
+        volumes:
+            - './:/local'
+        working_dir: '/local'
+        command: generate
+            --generator-name openapi-yaml
+            --input-spec ./openapi/oas.yaml
+            --output ./tmp
+
+    redocly-cli-lint:
+        image: 'redocly/cli'
+        volumes:
+            - './:/spec'
+        command: lint /spec/openapi/oas.yaml
+
+    redocly-cli-build-docs:
+        image: 'redocly/cli'
+        volumes:
+            - './:/spec'
+        # cf. https://redocly.com/docs/cli/commands/build-docs/
+        command: build-docs ./openapi/oas.yaml --output=./public/redocly.html

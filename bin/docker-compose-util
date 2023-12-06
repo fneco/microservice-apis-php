@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+
+# ```bash
+# ./bin/docker-compose-util openapi-generator-cli-php
+# ./bin/docker-compose-util openapi-generator-cli-openapi-yaml
+# ./bin/docker-compose-util redocly-cli-lint
+# ./bin/docker-compose-util redocly-cli-build-docs
+# ```
+
+TOP_LEVEL_DIR="$(git rev-parse --show-toplevel)"
+cd "$TOP_LEVEL_DIR" || exit
+
+docker compose --file ./docker-compose-util.yml run --rm "$@"
