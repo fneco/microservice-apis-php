@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# args: docker compose run の引数
+echo "docker-compose-run args: $*"
+docker compose --file "$DOCKER_COMPOSE_DIR/docker-compose-util.yml" run --rm "${@}"

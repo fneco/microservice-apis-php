@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+TOP_LEVEL_DIR="$(git rev-parse --show-toplevel)"
+DOCKER_COMPOSE_DIR="$(dirname "$0")" # source で読み込まれた場合、$0 source で読み込んだファイルの $0 が引き継がれる。
+
+echo "export TOP_LEVEL_DIR=$TOP_LEVEL_DIR"
+export TOP_LEVEL_DIR
+
+echo "export DOCKER_COMPOSE_DIR=$DOCKER_COMPOSE_DIR"
+export DOCKER_COMPOSE_DIR
+
+ENV_FILE="$DOCKER_COMPOSE_DIR/env"
+if [ -f "$ENV_FILE" ]; then
+    echo "source $ENV_FILE"
+
+    # shellcheck disable=SC1090
+    source "$ENV_FILE"
+fi
+

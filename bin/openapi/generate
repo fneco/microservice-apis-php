@@ -1,2 +1,8 @@
 #!/usr/bin/env bash
-"$(dirname "$0")/docker-compose-run" openapi-generator-cli-php
+# shellcheck disable=SC1091
+source "$(dirname "$(dirname "$0")")/docker-compose-env"
+"$(dirname  "$(dirname "$0")")/docker-compose-run" \
+    openapi-generator-cli generate \
+    --generator-name php \
+    --input-spec "${OAS_YAML}" \
+    --output ./openapi/Client

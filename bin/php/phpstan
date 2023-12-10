@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-"$(dirname "$0")/docker-compose-run" phpstan "$@"
+# shellcheck disable=SC1091
+source "$(dirname "$(dirname "$0")")/docker-compose-env"
+"$(dirname  "$(dirname "$0")")/docker-compose-run" phpstan "$@"

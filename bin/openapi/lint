@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-"$(dirname "$0")/docker-compose-run" spectral-lint
+# shellcheck disable=SC1091
+source "$(dirname "$(dirname "$0")")/docker-compose-env"
+
+# cf. https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli/
+"$(dirname  "$(dirname "$0")")/docker-compose-run" \
+    spectral lint "${OAS_YAML}" --ruleset "${DOCKER_COMPOSE_DIR}"/spectral.yaml

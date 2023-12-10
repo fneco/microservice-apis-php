@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-"$(dirname "$0")/phpstan" analyse src tests
+"$(dirname "$0")/phpstan" analyse app tests routes

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+OAS_YAML="openapi/oas.yaml"
+export OAS_YAML
+echo "export OAS_YAML=$OAS_YAML"

@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-"$(dirname "$0")/docker-compose-run" redocly-cli-build-docs
+# shellcheck disable=SC1091
+source "$(dirname "$(dirname "$0")")/docker-compose-env"
+# cf. https://redocly.com/docs/cli/commands/build-docs/
+"$(dirname  "$(dirname "$0")")/docker-compose-run" \
+    redocly-cli build-docs "${OAS_YAML}" --output=./public/redocly.html

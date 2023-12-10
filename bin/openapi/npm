@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# 動作確認用
-echo "COMMAND: $(dirname "$0")/docker-compose-run $(basename "$0") $*"
-"$(dirname "$0")/docker-compose-run" "$(basename "$0")" "$*"
