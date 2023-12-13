@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# shellcheck disable=SC1091
-source "$(dirname "$(dirname "$0")")/docker-compose-env"
-"$(dirname  "$(dirname "$0")")/docker-compose-run" php-cs-fixer "$@"

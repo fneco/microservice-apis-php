@@ -1,0 +1,3 @@
+#!/bin/bash
+# task.json で printf printf "%s\n" 引数1 引数2 引数3 が利用できなかったので作成
+for arg in "$@"; do echo "$arg"; done

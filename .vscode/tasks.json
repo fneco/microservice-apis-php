@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // cf. https://code.visualstudio.com/docs/editor/variables-reference
+            "label": "echo variables",
+            "type": "shell",
+            "command": "${workspaceFolder}/.vscode/scripts/echo-args",
+            "args": [
+                "workspaceFolder=${workspaceFolder}",
+                "fileWorkspaceFolder=${fileWorkspaceFolder}"
+            ]
+        }
+    ]
+}
