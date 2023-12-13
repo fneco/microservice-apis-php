@@ -1,0 +1,8 @@
+parameters:
+    bootstrapFiles:
+        - ../../vendor/autoload.php
+    tmpDir: tmp
+    paths:
+        - app
+        - tests
+        - routes
