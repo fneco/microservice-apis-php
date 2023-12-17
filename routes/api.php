@@ -1,7 +1,25 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+class MyController extends Controller
+{
+    public function handle(Request $request): ResponseFactory|Response
+    {
+        return $this->makeResponse();
+    }
+
+    private function makeResponse(): ResponseFactory|Response
+    {
+        return response(['hello' => 'world']);
+    }
+}
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +35,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/orders', [MyController::class, 'handle']);
+Route::post('/orders', [MyController::class, 'handle']);
+Route::get('/orders/{order_id}', [MyController::class, 'handle']);
+Route::put('/orders/{order_id}', [MyController::class, 'handle']);
+Route::post('/orders/{order_id}/cancel', [MyController::class, 'handle']);
+Route::post('/orders/{order_id}/pay', [MyController::class, 'handle']);
