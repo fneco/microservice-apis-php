@@ -1,6 +1,7 @@
 parameters:
     bootstrapFiles:
         - ../../vendor/autoload.php
+        - ../../_ide_helper.php
     tmpDir: tmp
     paths:
         - app
