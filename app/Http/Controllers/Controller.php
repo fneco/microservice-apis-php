@@ -14,13 +14,13 @@ class Controller extends BaseController
     use AuthorizesRequests;
     use ValidatesRequests;
 
-    public function handle(Request $request): ResponseFactory|Response
+    public function handle(Request $request): Response
     {
         return $this->defaultResponse();
     }
 
-    protected function defaultResponse(): ResponseFactory|Response
+    protected function defaultResponse(): Response
     {
-        return response(['hello' => 'world']);
+        return new Response(['hello' => 'world']);
     }
 }
