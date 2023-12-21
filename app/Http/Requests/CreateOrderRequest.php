@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Controllers\Api;
 
-class OrdersRequest extends FormRequest
+class CreateOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class OrdersRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'order' => ['required', new Api\OrdersRules()]
-            ];
+            'order.*.quantity' => ['required']
+        ];
     }
 }
