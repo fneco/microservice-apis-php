@@ -28,8 +28,8 @@
 
 namespace OpenAPI\Client\Model;
 
-use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use ArrayAccess;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * CreateOrderSchema Class Doc Comment
@@ -277,6 +277,8 @@ class CreateOrderSchema implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['order'] === null) {
             $invalidProperties[] = "'order' can't be null";
         }
+        // $this->container['order'] === null の時 skip されないので、
+        // TypeError[count(): Argument #1 ($value) must be of type Countable|array, null given] が発生する
         if ((count($this->container['order']) < 1)) {
             $invalidProperties[] = "invalid value for 'order', number of items must be greater than or equal to 1.";
         }
@@ -391,7 +393,7 @@ class CreateOrderSchema implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -417,5 +419,3 @@ class CreateOrderSchema implements ModelInterface, ArrayAccess, \JsonSerializabl
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
