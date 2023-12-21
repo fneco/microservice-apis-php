@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -22,7 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/orders', [Api\Orders::class, 'index']);
 Route::post('/orders', [Api\Orders::class, 'store']);
-Route::get('/orders/{order_id}', [Controller::class, 'handle']);
+Route::get('/orders/{order_id}', [Api\Orders::class, 'show']);
 Route::put('/orders/{order_id}', [Api\Orders::class, 'update']);
-Route::post('/orders/{order_id}/cancel', [Controller::class, 'handle']);
-Route::post('/orders/{order_id}/pay', [Controller::class, 'handle']);
+Route::delete('/orders/{order_id}', [Api\Orders::class, 'destroy']);
+Route::post('/orders/{order_id}/cancel', [Api\Orders::class, 'cancel']);
+Route::post('/orders/{order_id}/pay', [Api\Orders::class, 'pay']);
